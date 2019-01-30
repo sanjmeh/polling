@@ -1,0 +1,17 @@
+
+.form-control{
+  height:25vh;
+  width:95vw;
+  position:relative;
+  left:2px;
+}
+
+#random{
+  background:rgb(224,224,224);
+  font-size:32px;
+}
+
+#current {
+font-size:32px;
+background:rgb(200,100,50);
+}
