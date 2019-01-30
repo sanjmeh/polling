@@ -16,6 +16,7 @@ ui<- fluidPage(
   textInput("random",label = "Enter your word"),
   actionBttn("send",label = "SEND"), br(),br(),
   textOutput("current"),
+  textOutput("ip"),
   actionBttn("exit","Exit App",icon = icon("sign-out-alt"),style = "material-circle",color = "danger")
                )
 
@@ -27,9 +28,8 @@ server<- function(input,output,session){
   contents <- reactiveFileReader(intervalMillis = 200,filePath = "test.csv",readFunc = fread,header=T,session = session)
   output$current <- renderText(contents()$phrases %>% dQuote())
   IP <- reactive({ input$getIP })
-  
-  observe({
-    cat(capture.output(str(IP()), split=TRUE))
+  output$ip <- renderTable({
+    data.frame(IP())
   })
   
   observeEvent(input$exit,stopApp(1))
