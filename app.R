@@ -10,7 +10,8 @@ library(ggplot2)
 
 ui<- fluidPage(
   tags$head(
-    tags$link(type="text/css", rel="stylesheet", href="main.css")
+    tags$link(type="text/css", rel="stylesheet", href="main.css"),
+    tags$script(src="getIP.js")
     ),
   textInput("random",label = "Enter your word"),
   actionBttn("send",label = "SEND"), br(),br(),
@@ -25,6 +26,12 @@ server<- function(input,output,session){
   )
   contents <- reactiveFileReader(intervalMillis = 200,filePath = "test.csv",readFunc = fread,header=T,session = session)
   output$current <- renderText(contents()$phrases %>% dQuote())
+  IP <- reactive({ input$getIP })
+  
+  observe({
+    cat(capture.output(str(IP()), split=TRUE))
+  })
+  
   observeEvent(input$exit,stopApp(1))
 }
 
