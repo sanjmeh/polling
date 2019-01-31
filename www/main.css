@@ -1,6 +1,14 @@
+#user {
+  position:absolute;
+  z-index:2;
+  width:10vw;
+  top:1vh;
+  right:1vw;
+  font-size:24px;
+  background-color:orange;}
 
 .form-control{
-  height:25vh;
+  height:15vh;
   width:95vw;
   position:relative;
   left:2px;
@@ -14,4 +22,9 @@
 #current {
 font-size:32px;
 background:rgb(200,100,50);
+}
+
+#page{
+position:relative;
+top:10vh;
 }
