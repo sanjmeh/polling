@@ -3,15 +3,19 @@
   z-index:2;
   width:10vw;
   top:1vh;
-  right:1vw;
+  right:2vw;
   font-size:24px;
   background-color:orange;}
 
-.form-control{
+#main .form-control{
   height:15vh;
   width:95vw;
   position:relative;
   left:2px;
+}
+
+#auth{
+  height:5vh;
 }
 
 #random{
@@ -24,7 +28,7 @@ font-size:32px;
 background:rgb(200,100,50);
 }
 
-#page{
+#page1 {
 position:relative;
 top:10vh;
 }
