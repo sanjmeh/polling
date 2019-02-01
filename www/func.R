@@ -1,4 +1,5 @@
 # these are functions used for polls
+library(jsonlite)
 library(data.table)
 library(magrittr)
 
@@ -71,3 +72,11 @@ getname <- function(file="www/fnames.csv"){
   rname
 }
 
+isactive <- function(code, file="www/fnames.csv"){
+  x <- fread(file)
+  if(nrow(x[tolower(code)==tolower(names) & assigned==T])==1) T else F
+}
+
+logevent <- function(eventcode,user,param,conf=123,file="www/log.csv"){
+  fwrite(data.table(timestamp=Sys.time(),confcode=conf,user=user,event=eventcode,parameters=param),file,append = T,sep = "|",quote = F)
+}
